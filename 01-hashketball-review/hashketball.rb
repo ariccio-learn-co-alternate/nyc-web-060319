@@ -121,35 +121,53 @@ def game_hash
   }
 end
 
-def players
-  players = game_hash.keys.map do |loc|
-    # new_arr_of_players = []
-    game_hash[loc][:players]
+def find_player(player_name)
+  # get access to all the players
+  game_hash.keys.map do |loc|
+    new_arr_of_players = []
+    #binding.pry
+    game_hash[loc][:players].each do |player_hash|
+      new_arr_of_players << player_hash
+    end
+    new_arr_of_players.each do |player_hash|
+      if player_name == player_hash[:player_name]
+        return player_hash
+      end
+    end
   end
-  # binding.pry
-  players.flatten
+  nil
 end
-
-def find_the_player(name)
-  players.find do |player_hash|
-    player_hash[:player_name] == name
-  end
-end
-
 
 def num_points_scored(player_name)
-  # get access to all the players
-  # binding.pry
   #lookup the player
-  found_player = find_the_player(player_name)
-
+  player = find_player(player_name)
+  #binding.pry
+  player[:points]
   # get those stats!
-
-  found_player[:points]
 end
 
-def shoe_size(name)
-  found_player = find_the_player(name)
-  # binding.pry
-  found_player[:shoe]
+
+def shoe_size(player_name)
+  player = find_player(player_name)
+  player[:shoe]
+end
+
+
+def team_colors(team_name)
+  if game_hash[:home][:team_name] == team_name
+    return game_hash[:home][:colors]
+  else
+    return game_hash[:away][:colors]
+  end
+end
+
+def team_names
+  [game_hash[:home][:team_name], game_hash[:away][:team_name]]
+end
+
+def player_numbers
+  player_number_array = []
+  player_number_array << game_hash.keys.map do |loc|
+    game_hash[loc][]
+  end
 end
