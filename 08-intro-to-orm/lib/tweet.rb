@@ -9,10 +9,14 @@ class Tweet
     # @@all
     rows = DB[:conn].execute("SELECT * FROM tweets")
 
+
     # binding.pry
     # rn, this returns an array of hashes,
     # this should return an array of tweet instances
-    rows
+    rows.map! do |row|
+      #binding.pry
+      Tweet.new({'message' => row["message"], 'user_id' => row["user_id"], 'id' => row["id"]})
+    end
   end
 
   def initialize(attributes={})
