@@ -1,24 +1,24 @@
 # Async Redux
 
-- Which library should we import combineReducers from?
-- What does combineReducers allow us to do?
-- Why is this important?
+- Which library should we import combineReducers from? REDUX
+- What does combineReducers allow us to do? combine multiple reducers
+- Why is this important? to split em up
 
-- What is connect()?
-- Which library should we import connect() from?
-- What functionality does it provide?
+- What is connect()? its metaprogramming to set up mapStateToProps and mapDispatchToProps
+- Which library should we import connect() from? react-redux
+- What functionality does it provide?  its metaprogramming to set up mapStateToProps and mapDispatchToProps
 
-- What argument(s) should mapStateToProps accept?
-- What arguments(s) should mapDispatchToProps accept?
+- What argument(s) should mapStateToProps accept? state to map to props
+- What arguments(s) should mapDispatchToProps accept? a callback to dispatch to?
 
-- What should mapStateToProps return?
-- What should mapDispatchToProps return?
+- What should mapStateToProps return? something that can be used as props
+- What should mapDispatchToProps return? an object that maps action types (like window messages) to function calls
 
-- How do our connect() fuctions create a single prop object in our component?
+- How do our connect() functions create a single prop object in our component? Good question.
 
-- Why is mapDispatchToProps an important function?
+- Why is mapDispatchToProps an important function? To setup the event loop to handle lots of different actions?
 
-- What does .then() return?
+- What does .then() return? El promiso.
 
 ## Handling Async in Redux
 

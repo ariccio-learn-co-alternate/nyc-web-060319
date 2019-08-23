@@ -29,8 +29,19 @@ function fetchReducer(state = defaultState, action) {
  }
 }
 
+function squirrelReducer(state = defaultState.squirrelLikes, action) {
+  switch (action.type) {
+   case 'LIKE_SQUIRREL':
+    return state + 1;
+   default:
+    return state;
+  }
+ }
+ 
+
 const rootReducer = combineReducers({
  dogLikes: dogReducer,
+  squirrelLikes: squirrelReducer,
  animals: fetchReducer
 });
 

@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 class Animal extends React.Component {
  state = { clicked: false };
 
- likeClickHandler = () => {
-  console.log('clicking');
-  this.setState(prevState => ({
-   likes: (prevState.likes += 1)
-  }));
- };
+//  likeClickHandler = () => {
+//   console.log('clicking');
+//   this.setState(prevState => ({
+//    likes: (prevState.likes += 1)
+//   }));
+//  };
 
  render() {
   console.log('Animal state', this.state.clicked);
@@ -24,7 +24,7 @@ class Animal extends React.Component {
     <Link to={this.props.route}>
      <button>Go to show page</button>
     </Link>
-    <button onClick={this.likeClickHandler}>Like</button>
+    <button onClick={this.props.likeClickHandler}>Like</button>
    </div>
   );
  }

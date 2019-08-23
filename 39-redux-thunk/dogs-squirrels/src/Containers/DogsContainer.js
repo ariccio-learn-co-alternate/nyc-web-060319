@@ -2,11 +2,12 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Animal from '../Components/Animal';
 import Form from '../Components/Form';
+import {connect} from 'react-redux';
 
 class DogsContainer extends React.Component {
  render() {
   let dogsArray = this.props.dogs.map(dog => (
-   <Animal key={dog.id} animal={dog} route={`/dogs/${dog.id}`} />
+   <Animal key={dog.id} animal={dog} route={`/dogs/${dog.id}`} likeClickHandler={this.props.addDogLike}/>
   ));
   return (
    <div className="container">
@@ -20,8 +21,8 @@ class DogsContainer extends React.Component {
          let dog = this.props.dogs.find(dog => dog.id === id);
          return (
           <div>
-           <h3>Dogs Score: 0</h3>
-           <Animal animal={dog} route={`/dogs/${dog.id}`} />
+           <h3>Dogs Score: {this.props.dogLikes}</h3>
+           <Animal animal={dog} route={`/dogs/${dog.id}`} likeClickHandler={this.props.addDogLike}/>
           </div>
          );
         }}
@@ -33,7 +34,7 @@ class DogsContainer extends React.Component {
          return (
           <div>
            <h1>Dogs Container</h1>
-           <h3>Dogs Score: 0</h3>
+           <h3>Dogs Score: {this.props.dogLikes}</h3>
            <Form submitHandler={this.props.containerSubmitHandler} />
            {dogsArray}
           </div>
@@ -47,5 +48,18 @@ class DogsContainer extends React.Component {
   );
  }
 }
+function mapStateToProps(state) {
+    return {
+     dogLikes: state.dogLikes
+    };
+}
+   
+function mapDispatchToProps(dispatch) {
+    return {
+     addDogLike: () => dispatch({ type: 'LIKE_DOG' }),
+    };
+}
+   
 
-export default DogsContainer;
+
+export default connect(mapStateToProps, mapDispatchToProps)(DogsContainer);

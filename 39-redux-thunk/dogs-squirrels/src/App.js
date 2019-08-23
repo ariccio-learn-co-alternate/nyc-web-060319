@@ -6,6 +6,7 @@ import DogsContainer from './Containers/DogsContainer';
 import SquirrelsContainer from './Containers/SquirrelsContainer';
 import FoOhFo from './Components/FoOFo';
 
+// store.dispatch()
 class App extends React.Component {
  state = {
   dogs: [],
